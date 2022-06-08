@@ -1,6 +1,6 @@
 #include "stb_image.h"
 #include <stdio.h>
 int main(){
-	printf ("Hello world!");
+	printf ("HAMPTER!");
 	return 0;
 }
