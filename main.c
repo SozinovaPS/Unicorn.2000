@@ -16,6 +16,6 @@ int main(){
 	int i, j, k = 0;
 	unsigned char* odata = malloc(ih * iw * n * sizeof(unsigned char));
 	unsigned char* newImage = malloc(ih * iw * sizeof(unsigned char));
-	
+//	
 	return 0;
 }
