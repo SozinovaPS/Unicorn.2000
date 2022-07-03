@@ -10,7 +10,7 @@
 #include "stb_image_write.h"
 
 #define BLACK 95
-#define WHITE 160
+#define WHITE 165
 
 unsigned char* color_to_grey(unsigned char* Image, int w, int h, int n){
 	int i, k = 0;
@@ -59,15 +59,14 @@ void DFS (int i, int j, int w, int h, int size,  int graph[size], unsigned char*
 }
 
 unsigned char* coloration(unsigned char* Img, int w, int h, int n, int size, int graph[size]){
-	int i, c, k = 0;
-	for (i = 0; i < size * n; i += n){
-		c = graph[k] % 74 + graph[k] % 13;
-        	Img[i] = 3 * c - 100;
-        	Img[i + 1] = 4 * c + 149;
-        	Img[i + 2] = 5 * c + 237;
-        	Img[i + 3] = 255;
-        	k++;
-	}
+	int i;
+	for (i = 0; i < size; i++){
+        	Img[i * n] = 100 + graph[i] + 0.51 * graph[i - 1];
+        	Img[i * n + 1] = 149 + graph[i];
+        	Img[i * n + 2] = 237 + graph[i];
+        	if (n == 4) 
+			Img[i * n + 3] = 255;
+   	}
 	return Img;
 }
 
