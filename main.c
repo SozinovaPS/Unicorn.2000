@@ -61,9 +61,9 @@ void DFS (int i, int j, int w, int h, int size,  int graph[size], unsigned char*
 unsigned char* coloration(unsigned char* Img, int w, int h, int n, int size, int graph[size]){
 	int i;
 	for (i = 0; i < size; i++){
-        	Img[i * n] = 78 + graph[i] + 0.5 * graph[i - 1];
-        	Img[i * n + 1] = 46 + graph[i];
-        	Img[i * n + 2] = 153 + graph[i];
+        	Img[i * n] = 100 + graph[i] + 0.5 * graph[i - 1];
+        	Img[i * n + 1] = 149 + graph[i];
+        	Img[i * n + 2] = 237 + graph[i];
         	if (n == 4) 
 			Img[i * n + 3] = 255;
    	}
