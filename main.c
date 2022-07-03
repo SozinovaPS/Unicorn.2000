@@ -8,8 +8,8 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 
-#define BLACK 90
-#define WHITE 170
+#define BLACK 99
+#define WHITE 165
 
 unsigned char* color_to_grey(unsigned char* Image, int w, int h, int n){
 	int i, k = 0;
@@ -31,9 +31,9 @@ unsigned char*  contrast( unsigned char* Image, int w, int h) {
 	int i, j;    	
 	for (i = 2; i < h - 1; i++)
         	for (j = 2; j < w - 1; j++) {
-            		if (Image[w * i + j] < BLACK)
+            		if (Image[w * i + j] <= BLACK)
 				Image[w * i + j] = 0;
-            		if (Image[w * i + j] > WHITE)
+            		if (Image[w * i + j] >= WHITE)
 				Image[w * i + j] = 255;
         	}
 	return Image;
