@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
+#include <math.h>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -39,6 +40,37 @@ unsigned char*  contrast( unsigned char* Image, int w, int h) {
 	return Image;
 }
 
+void DFS (int i, int j, int w, int h, int size,  int graph[size], unsigned char* Img, int m){
+	graph[w * i + j] = m;
+    	if((i >= 1) && (i <= h - 1) && (j - 2 >= 1) && (j - 2 <= w - 1))
+        	if((fabs(Img[w * i + j] - Img[w * i + (j - 2)]) <= 60) && (graph[w * i + (j - 2)] == 0))
+            		DFS(i, j - 2, w, h, size, graph, Img, m);
+        
+    
+    	if((i - 2 >= 1) && (i - 2 <= h - 1) && (j + 1 >= 1) && (j + 1 <= w - 1))
+        	if((fabs(Img[w * i + j] - Img[w * (i - 2) + (j + 1)]) <= 60) && (graph[w * (i - 2) + (j + 1)] == 0))
+            		DFS(i - 2, j + 1, w, h, size, graph, Img, m);
+       
+    
+    	if((i + 2 >= 1) && (i + 2 <= h - 1) && (j + 1 >= 1) && (j + 1 <= w - 1))
+        	if((fabs(Img[w * i + j] - Img[w * (i + 2) + (j + 1)]) <= 60) && (graph[w * (i + 2) + (j + 1)] == 0))
+            		DFS(i + 2, j + 1, w, h, size, graph, Img, m);
+     
+}
+
+unsigned char* coloration(unsigned char* Img, int w, int h, int n, int size, int graph[size]){
+	int i;
+	for (i = 0; i < size; i++){
+        	Img[i * n] = 78 + graph[i] + 0.5 * graph[i - 1];
+        	Img[i * n + 1] = 46 + graph[i];
+        	Img[i * n + 2] = 153 + graph[i];
+        	if (n == 4) 
+			Img[i * n + 3] = 255;
+   	}
+	
+	return Img;
+}
+
 int main(){
 	char* inputPath = "hampster.png";
 	int w, h, n;
@@ -47,7 +79,7 @@ int main(){
 		printf ("ERROR: can't read file! %s\n", inputPath);
 		return -1;
 	}
-	int i, j, k = 0;
+	int i, j, k = 55;
 	unsigned char* odata = (unsigned char*) malloc(h * w * n * sizeof(unsigned char));
 	unsigned char* My_img = (unsigned char*) malloc(h * w * sizeof(unsigned char));
 	if ((odata == NULL) || (My_img == NULL)) {
@@ -63,9 +95,18 @@ int main(){
 	for (i = 0; i < size; i++)
 		graph[i] = 0;
 
-	
+	int m = 0;
+	for (i = 1; i < h - 1; i++)
+		for (j = 1; j < w - 1; j++)
+			if (graph[w * i + j] == 0){
+				m += 1;
+				DFS(i, j, w, h, size, graph,  My_img, m);
+			}
+
+	My_img = coloration(odata, w, h, n, size, graph);
+
 	char* outputPath = "final.png";
-	stbi_write_png(outputPath, w, h, 1, My_img, 0);
+	stbi_write_png(outputPath, w, h, n, My_img, 0);
 
 	printf ("^-^");
 	printf ("\n");
