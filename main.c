@@ -9,8 +9,8 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 
-#define BLACK 87
-#define WHITE 170
+#define BLACK 94
+#define WHITE 166
 
 unsigned char* color_to_grey(unsigned char* Image, int w, int h, int n){
 	int i, k = 0;
@@ -104,7 +104,7 @@ int main(){
 
 	My_img = coloration(odata, w, h, n, size, graph);
 
-	char* outputPath = "prekol.png";
+	char* outputPath = "Horse_Rider.png";
 	stbi_write_png(outputPath, w, h, n, My_img, 0);
 
 	printf ("^-^");
