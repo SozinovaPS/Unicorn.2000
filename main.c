@@ -9,7 +9,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 
-#define BLACK 93
+#define BLACK 94
 #define WHITE 167
 
 unsigned char* color_to_grey(unsigned char* Image, int w, int h, int n){
