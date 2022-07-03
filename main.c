@@ -71,7 +71,7 @@ unsigned char* coloration(unsigned char* Img, int w, int h, int n, int size, int
 }
 
 int main(){
-	char* inputPath = "Arrow_head.png";
+	char* inputPath = "Rider-Karl-Bryullov-1.png";
 	int w, h, n;
 	unsigned char* data = stbi_load(inputPath, &w, &h, &n, 0);
 	if (data == NULL){
@@ -104,7 +104,7 @@ int main(){
 
 	My_img = coloration(odata, w, h, n, size, graph);
 
-	char* outputPath = "arrow_head_out.png";
+	char* outputPath = "Horse_Rider.png";
 	stbi_write_png(outputPath, w, h, n, My_img, 0);
 
 	printf ("^-^");
