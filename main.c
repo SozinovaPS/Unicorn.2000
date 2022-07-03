@@ -32,7 +32,7 @@ unsigned char*  contrast( unsigned char* Image, int w, int h) {
 	int i, j;    	
 	for (i = 2; i < h - 1; i++)
         	for (j = 2; j < w - 1; j++) {
-            		if (Image[w * i + j] <  BLACK + 0.5)
+            		if (Image[w * i + j] <  BLACK)
 				Image[w * i + j] = 0;
             		if (Image[w * i + j] > WHITE)
 				Image[w * i + j] = 255;
@@ -61,9 +61,9 @@ void DFS (int i, int j, int w, int h, int size,  int graph[size], unsigned char*
 unsigned char* coloration(unsigned char* Img, int w, int h, int n, int size, int graph[size]){
 	int i;
 	for (i = 0; i < size; i++){
-        	Img[i * n] = 255 + graph[i] + 0.51 * graph[i - 1];
-        	Img[i * n + 1] = 20 + graph[i];
-        	Img[i * n + 2] = 147 + graph[i];
+        	Img[i * n] = 100 + graph[i] + 0.51 * graph[i - 1];
+        	Img[i * n + 1] = 149 + graph[i];
+        	Img[i * n + 2] = 237 + graph[i];
         	if (n == 4) 
 			Img[i * n + 3] = 255;
    	}
