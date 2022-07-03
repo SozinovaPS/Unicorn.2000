@@ -25,7 +25,7 @@ unsigned char* color_to_grey(unsigned char* Image, int w, int h, int n){
 }
 
 int main(){
-	char* inputPath = "hampster.png";
+	char* inputPath = "Rider-Karl-Bryullov-1.png";
 	int w, h, n;
 	unsigned char* data = stbi_load(inputPath, &w, &h, &n, 0);
 	if (data == NULL){
@@ -40,7 +40,7 @@ int main(){
 		return 1;
         }
 	My_img = color_to_grey(data, w, h, n);
-	char* outputPath = "final.png";
+	char* outputPath = "prekol.png";
 	stbi_write_png(outputPath, w, h, 1, My_img, 0);
 
 	printf ("^-^");
