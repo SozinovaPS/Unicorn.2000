@@ -104,7 +104,7 @@ int main(){
 
 	My_img = coloration(odata, w, h, n, size, graph);
 
-	char* outputPath = "arrow_head__out.jpg";
+	char* outputPath = "arrow_head_out.png";
 	stbi_write_png(outputPath, w, h, n, My_img, 0);
 
 	printf ("^-^");
