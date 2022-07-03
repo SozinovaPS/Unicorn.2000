@@ -10,7 +10,7 @@
 #include "stb_image_write.h"
 
 #define BLACK 100
-#define WHITE 170
+#define WHITE 150
 
 unsigned char* color_to_grey(unsigned char* Image, int w, int h, int n){
 	int i, k = 0;
