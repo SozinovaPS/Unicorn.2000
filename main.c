@@ -107,6 +107,9 @@ int main(){
 	char* outputPath = "Horse_Rider.png";
 	stbi_write_png(outputPath, w, h, n, My_img, 0);
 
+	
+    	
+
 	printf ("^-^");
 	printf ("\n");
 	return 0;
